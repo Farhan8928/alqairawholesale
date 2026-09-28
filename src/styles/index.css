@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Rules carried over from the retail build's DESIGN.md:
+ *  - navy + gold are chrome; product surfaces stay ivory
+ *  - 2px radius on controls, 0 elsewhere; no pill buttons
+ *  - no card shadows, no glows, no decorative gradients
+ *  - one gold thing per screen
+ */
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  background: #FAF6EE;
+  color: #16183A;
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: clip;
+}
+
+::selection {
+  background: #16183A;
+  color: #FAF6EE;
+}
+
+/* Number inputs: the stepper buttons beside them do this job */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-10;
+  }
+
+  .display {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.2em] text-navy-900/55;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-5 h-11 text-sm font-semibold
+      transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+      focus-visible:outline-gold disabled:cursor-not-allowed disabled:opacity-40 whitespace-nowrap;
+  }
+  .btn-sm {
+    @apply h-9 px-3.5 text-[13px];
+  }
+  .btn-primary {
+    @apply bg-navy-900 text-ivory-100 hover:bg-navy-700;
+  }
+  .btn-gold {
+    @apply bg-gold text-navy-950 hover:bg-gold-light;
+  }
+  .btn-outline {
+    @apply border border-navy-900/25 text-navy-900 hover:border-navy-900 hover:bg-navy-900 hover:text-ivory-100;
+  }
+  .btn-outline-light {
+    @apply border border-ivory-100/30 text-ivory-100 hover:border-ivory-100 hover:bg-ivory-100 hover:text-navy-900;
+  }
+
+  /* ── Forms ── */
+  .field {
+    @apply block w-full rounded-sm border border-line bg-ivory-50 px-3.5 h-11 text-sm text-navy-900
+      placeholder:text-navy-900/35 outline-none transition-colors
+      focus:border-navy-900 focus:bg-white;
+  }
+  .field-label {
+    @apply mb-1.5 block text-[13px] font-semibold text-navy-900;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-sm border border-line bg-ivory-50 px-2.5 h-7 text-xs font-medium text-navy-900/80;
+  }
+
+  .hairline {
+    @apply border-line;
+  }
+
+  /* Film grain over dark bands — texture, not decoration. */
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

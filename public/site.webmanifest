@@ -1,0 +1,9 @@
+{
+  "name": "ALQAIRA Wholesale",
+  "short_name": "ALQAIRA Trade",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6EE",
+  "theme_color": "#16183A",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

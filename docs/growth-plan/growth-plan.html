@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ALQAIRA Wholesale — Growth Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #16183A;
+    --navy-deep: #0C0D22;
+    --gold: #C9A24B;
+    --gold-dark: #A8842F;
+    --ivory: #FAF6EE;
+    --ivory-2: #F2ECDF;
+    --line: #E3DBC9;
+    --ink-2: #4A4C6A;
+    --ink-3: #7B7D95;
+  }
+  @page { size: A4; margin: 15mm 17mm 17mm 17mm; }
+  @page cover { margin: 0; }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    font-size: 9.4pt;
+    line-height: 1.48;
+    color: var(--navy);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .display { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; line-height: 1.08; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  h1, h2, h3, h4 { margin: 0; }
+  p { margin: 0 0 6pt; }
+  strong { font-weight: 650; }
+
+  /* ───────── Cover ───────── */
+  .cover {
+    page: cover;
+    width: 210mm; height: 297mm;
+    background: var(--navy-deep);
+    color: var(--ivory);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover .photo {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 58%;
+    background: url('../../public/banners/slide-men.jpg') 72% 20% / cover no-repeat;
+  }
+  .cover .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, #0C0D22 0%, #0C0D22 42%, rgba(12,13,34,0.55) 66%, rgba(12,13,34,0.15) 100%);
+  }
+  .cover .inner { position: absolute; inset: 0; padding: 22mm 20mm; display: flex; flex-direction: column; }
+  .cover .wordmark { height: 9mm; width: auto; align-self: flex-start; }
+  .cover .kicker { margin-top: 62mm; font-size: 9pt; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
+  .cover h1 { margin-top: 6mm; font-size: 40pt; max-width: 120mm; }
+  .cover .sub { margin-top: 8mm; max-width: 98mm; font-size: 11.5pt; line-height: 1.55; color: rgba(250,246,238,0.8); }
+  .cover .meta { margin-top: auto; display: grid; grid-template-columns: repeat(3, auto); gap: 0 12mm; justify-content: start; border-top: 1px solid rgba(250,246,238,0.2); padding-top: 6mm; font-size: 8.5pt; color: rgba(250,246,238,0.65); }
+  .cover .meta b { display: block; color: var(--ivory); font-size: 10pt; font-weight: 600; margin-top: 1mm; }
+
+  /* ───────── Body ───────── */
+  .page { page-break-before: always; }
+  .section-head { margin-bottom: 5mm; }
+  .eyebrow { font-size: 8pt; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); }
+  h2.display { font-size: 22pt; margin-top: 1.5mm; }
+  .lede { font-size: 10.4pt; line-height: 1.5; color: var(--ink-2); max-width: 160mm; margin-top: 3mm; }
+  h3 { font-size: 11pt; font-weight: 700; margin: 5mm 0 2mm; }
+  h3:first-child { margin-top: 0; }
+  h4 { font-size: 10pt; font-weight: 700; margin: 0 0 1.5mm; }
+  .muted { color: var(--ink-2); }
+  .small { font-size: 8.6pt; color: var(--ink-3); }
+
+  ul.plain { margin: 0 0 6pt; padding-left: 4.5mm; }
+  ul.plain li { margin-bottom: 1.1mm; }
+  ul.plain li::marker { color: var(--gold-dark); }
+
+  .phase-head { display: grid; grid-template-columns: 22mm 1fr auto; align-items: end; gap: 4mm; border-bottom: 1.2pt solid var(--navy); padding-bottom: 3mm; margin-bottom: 5mm; }
+  .phase-head .n { font-family: 'Bodoni Moda', serif; font-weight: 600; font-size: 36pt; line-height: 1; color: var(--gold); margin-bottom: -1.5mm; }
+  .phase-head h2 { font-size: 20pt; }
+  .phase-head .when { font-size: 8.5pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--navy); color: var(--ivory); padding: 1.6mm 3mm; border-radius: 1pt; white-space: nowrap; }
+  .phase-goal { font-size: 10.2pt; color: var(--ink-2); margin: -1.5mm 0 4.5mm; max-width: 165mm; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; line-height: 1.42; margin: 1.5mm 0 4mm; page-break-inside: avoid; }
+  th { text-align: left; font-size: 7.2pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); padding: 1.5mm 2.5mm 1.5mm 0; border-bottom: 1pt solid var(--navy); }
+  td { padding: 1.6mm 2.5mm 1.6mm 0; border-bottom: 0.6pt solid var(--line); vertical-align: top; }
+  td.r, th.r { text-align: right; padding-right: 6mm; white-space: nowrap; }
+  td.r:last-child, th.r:last-child { padding-right: 0; }
+  tr.total td { border-top: 1pt solid var(--navy); border-bottom: none; font-weight: 700; }
+  td b { font-weight: 650; }
+
+  .box { background: var(--ivory); border: 0.6pt solid var(--line); padding: 4mm 5mm; margin: 3mm 0 4mm; page-break-inside: avoid; }
+  .box.dark { background: var(--navy); color: var(--ivory); border: none; }
+  .box.dark .small, .box.dark .muted { color: rgba(250,246,238,0.7); }
+  .box h4 { margin-bottom: 2mm; }
+  .box p:last-child, .box ul:last-child { margin-bottom: 0; }
+  .note { border-left: 2pt solid var(--gold); padding: 0.5mm 0 0.5mm 4mm; margin: 3mm 0 3mm; color: var(--ink-2); page-break-inside: avoid; }
+
+  .check { list-style: none; padding: 0; margin: 0 0 4mm; }
+  .check li { display: grid; grid-template-columns: 6mm 1fr; gap: 1mm; padding: 1.4mm 0; border-bottom: 0.6pt solid var(--line); page-break-inside: avoid; }
+  .check li::before { content: ''; width: 3.2mm; height: 3.2mm; border: 0.9pt solid var(--navy); margin-top: 1mm; border-radius: 0.5pt; }
+  .check li b { font-weight: 650; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm; }
+  .stat { border-top: 1pt solid var(--navy); padding-top: 3mm; }
+  .stat .v { font-family: 'Bodoni Moda', serif; font-weight: 600; font-size: 22pt; line-height: 1; }
+  .stat .k { font-size: 8.6pt; color: var(--ink-2); margin-top: 2mm; }
+
+  /* Timeline */
+  .timeline { margin: 4mm 0 6mm; page-break-inside: avoid; }
+  .tl-months { display: grid; grid-template-columns: 34mm repeat(9, 1fr); font-size: 7.6pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); border-bottom: 1pt solid var(--navy); }
+  .tl-months div { padding: 0 0 1.8mm 1mm; }
+  .tl-row { display: grid; grid-template-columns: 34mm repeat(9, 1fr); align-items: center; border-bottom: 0.6pt solid var(--line); min-height: 8mm; position: relative; }
+  .tl-row .lbl { font-size: 8.6pt; font-weight: 600; padding-right: 2mm; }
+  .bar { height: 4.2mm; border-radius: 1pt; font-size: 7pt; font-weight: 700; color: var(--ivory); padding: 0 1.5mm; display: flex; align-items: center; white-space: nowrap; overflow: hidden; }
+  .bar.navy { background: var(--navy); }
+  .bar.gold { background: var(--gold); color: var(--navy-deep); }
+  .bar.soft { background: var(--ivory-2); color: var(--navy); border: 0.6pt solid var(--line); }
+  .tl-grid-bg { position: absolute; inset: 0; display: grid; grid-template-columns: 34mm repeat(9, 1fr); pointer-events: none; }
+  .tl-grid-bg div + div { border-left: 0.6pt dashed var(--line); }
+  .tl-row > .bar, .tl-row > .lbl { position: relative; z-index: 1; }
+
+  .phases-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1pt solid var(--navy); margin-top: 3mm; }
+  .phases-mini > div { padding: 3mm 4mm 3mm 0; border-bottom: 0.6pt solid var(--line); }
+  .phases-mini > div:nth-child(3n+2), .phases-mini > div:nth-child(3n) { padding-left: 4mm; border-left: 0.6pt solid var(--line); }
+  .phases-mini .pn { font-family: 'Bodoni Moda', serif; font-size: 16pt; font-weight: 600; color: var(--gold-dark); line-height: 1; }
+  .phases-mini h4 { margin-top: 2mm; }
+  .phases-mini .w { font-size: 7.8pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  .phases-mini p { font-size: 8.8pt; color: var(--ink-2); margin: 1.5mm 0 0; }
+
+  .avoid { page-break-inside: avoid; }
+  .sources { font-size: 8.2pt; color: var(--ink-2); columns: 1; }
+  .sources li { margin-bottom: 1.4mm; word-break: break-word; }
+  .sources a { color: var(--navy); text-decoration: none; }
+  .sources .grp { font-weight: 700; color: var(--navy); margin: 4mm 0 1.5mm; font-size: 8.6pt; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════ COVER ══════════════════════════ -->
+<section class="cover">
+  <div class="photo"></div>
+  <div class="scrim"></div>
+  <div class="inner">
+    <img class="wordmark" src="../../public/alqaira-wordmark.png" alt="ALQAIRA" />
+    <p class="kicker">Wholesale · Growth plan</p>
+    <h1 class="display">From zero to a working wholesale business.</h1>
+    <p class="sub">A step-by-step plan for ALQAIRA's thobe, jubba and kurta wholesale: what to register, what to make, how to price, where the first buyers come from, and how to be stocked in time for Ramadan and Eid 2027.</p>
+    <div class="meta">
+      <div>Prepared for<b>ALQAIRA</b></div>
+      <div>Date<b>28 September 2026</b></div>
+      <div>Horizon<b>Oct 2026 – Sep 2027</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ 1 · SUMMARY ══════════════════════════ -->
+<section class="page">
+  <div class="section-head">
+    <p class="eyebrow">The plan on one page</p>
+    <h2 class="display">Win the Eid 2027 season with a small, sharp range — then build from repeat orders.</h2>
+  </div>
+
+  <p class="lede">Wholesale is not retail with bigger orders. You sell to perhaps 30–100 shop owners instead of thousands of shoppers, so a few relationships decide the year. The business wins on three things: <strong>a short range that sells through</strong>, <strong>prices that leave the shop a real margin</strong>, and <strong>being in stock before the season</strong> rather than during it.</p>
+
+  <div class="grid3" style="margin-top:8mm">
+    <div class="stat"><div class="v num">8 Feb</div><div class="k">Expected start of Ramadan 2027. Shops buy their Eid stock in <b>November–January</b>, not in Ramadan.</div></div>
+    <div class="stat"><div class="v num">~5 weeks</div><div class="k">From today to the start of that buying window. Registration, samples and photography must be done by early November.</div></div>
+    <div class="stat"><div class="v num">5%</div><div class="k">GST on garments sold at ₹2,500 or less per piece (18% above). Keep the core range under that line.</div></div>
+  </div>
+
+  <h3 style="margin-top:10mm">Six phases</h3>
+  <div class="phases-mini">
+    <div><div class="pn">01</div><p class="w">October, weeks 1–3</p><h4>Set up the business</h4><p>Entity, bank, GST, Udyam, trademark. Nothing can be invoiced without these.</p></div>
+    <div><div class="pn">02</div><p class="w">October – early November</p><h4>Range, supply, photos</h4><p>8–12 launch styles, approved samples, a costing sheet, real product photography.</p></div>
+    <div><div class="pn">03</div><p class="w">Before the first sale</p><h4>Prices and terms</h4><p>Wholesale price, printed MRP, volume tiers and a written payment policy.</p></div>
+    <div><div class="pn">04</div><p class="w">November – January</p><h4>The first 25 buyers</h4><p>Shop visits with a sample bag, WhatsApp catalogue, the website, B2B listings.</p></div>
+    <div><div class="pn">05</div><p class="w">From the first order</p><h4>Run the operation</h4><p>Order to cash: proforma, advance, packing, e-way bill, dispatch, collection.</p></div>
+    <div><div class="pn">06</div><p class="w">March 2027 onward</p><h4>Grow</h4><p>Reorders, more cities, private label, GCC export, second season (Eid al-Adha).</p></div>
+  </div>
+
+  <div class="box dark" style="margin-top:8mm">
+    <h4>Five decisions only you can make — needed in the first two weeks</h4>
+    <ul class="plain" style="margin-top:2mm">
+      <li><b>Make or buy.</b> Own production through job-work tailoring units, or buy finished garments and put the ALQAIRA label on them.</li>
+      <li><b>Launch cities.</b> Your home city plus two others you can reach by train in a day.</li>
+      <li><b>Credit policy.</b> Recommended: advance payment for every first order; credit only after three paid orders.</li>
+      <li><b>Final prices.</b> The website currently shows working prices that must be confirmed against real costs.</li>
+      <li><b>Business structure.</b> Proprietorship, LLP or private limited — decide with your CA before applying for GST.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════ 2 · CALENDAR ══════════════════════════ -->
+<section class="page">
+  <div class="section-head">
+    <p class="eyebrow">The calendar that runs this business</p>
+    <h2 class="display">Retailers buy two to three months before the festival.</h2>
+    <p class="lede">Islamic menswear is seasonal. The weeks before Ramadan and the two Eids are where most of the year's volume is sold at shop level, and the wholesale orders that feed them are placed well ahead. Dates below are astronomical estimates; the final dates depend on moon sighting.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-months"><div></div><div>Oct</div><div>Nov</div><div>Dec</div><div>Jan</div><div>Feb</div><div>Mar</div><div>Apr</div><div>May</div><div>Jun</div></div>
+
+    <div class="tl-row"><div class="tl-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lbl">Set-up & samples</div><div class="bar navy" style="grid-column: 2 / span 1">Phases 1–3</div></div>
+
+    <div class="tl-row"><div class="tl-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lbl">Launch stock made</div><div class="bar soft" style="grid-column: 2 / span 2">Production</div></div>
+
+    <div class="tl-row"><div class="tl-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lbl">Shops stock for Eid al-Fitr</div><div class="bar gold" style="grid-column: 3 / span 3">Main wholesale selling window</div></div>
+
+    <div class="tl-row"><div class="tl-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lbl">Ramadan</div><div class="bar navy" style="grid-column: 6 / span 1">from ≈ 8 Feb</div></div>
+
+    <div class="tl-row"><div class="tl-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lbl">Eid al-Fitr</div><div class="bar gold" style="grid-column: 7 / span 1">≈ 9–10 Mar</div></div>
+
+    <div class="tl-row"><div class="tl-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lbl">Shops stock for Eid al-Adha</div><div class="bar soft" style="grid-column: 7 / span 2">Second window</div></div>
+
+    <div class="tl-row"><div class="tl-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lbl">Eid al-Adha</div><div class="bar gold" style="grid-column: 9 / span 1">≈ 16–17 May</div></div>
+
+    <div class="tl-row"><div class="tl-grid-bg"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lbl">Wedding & Nikah season</div><div class="bar soft" style="grid-column: 2 / span 3">Oct – Dec</div><div class="bar soft" style="grid-column: 8 / span 2; margin-left:1mm">Apr – Jun</div></div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h3>What this means in practice</h3>
+      <ul class="plain">
+        <li><b>Launch stock must exist by mid-November.</b> A shop that is shown samples in November and told "delivery in January" will buy elsewhere.</li>
+        <li><b>Plan the last reorder cut-off</b> for around 10 January, so goods reach shops before Ramadan begins.</li>
+        <li><b>Sizes 56 and 58 sell out first</b> every Eid, a specialist thobe retailer reports. Check this against your own first orders, and make more of the fast sizes.</li>
+        <li><b>Eid al-Adha is the second chance.</b> Whatever you learn in the first season, apply it to April's orders.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Other dates worth diarising</h3>
+      <ul class="plain">
+        <li><b>CMAI National Garment Fair</b>, Mumbai, held each July (2026 edition: 13–15 July). Thousands of trade buyers; book a stall for 2027 once you have one full season behind you.</li>
+        <li><b>CMAI Kidswear fair</b>, Mumbai, held in June.</li>
+        <li><b>Umrah season</b> runs year-round, with peaks in Ramadan and the school holidays — steady demand for plain white thobes.</li>
+        <li><b>GST returns</b> monthly or quarterly depending on the scheme your CA chooses.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ PHASE 1 ══════════════════════════ -->
+<section class="page">
+  <div class="phase-head"><div class="n">01</div><h2 class="display">Set up the business</h2><div class="when">Oct · weeks 1–3</div></div>
+  <p class="phase-goal">Goal: be able to issue a GST tax invoice, receive payment into a business account, and own the ALQAIRA name.</p>
+
+  <table>
+    <thead><tr><th style="width:24%">Registration</th><th>Why you need it</th><th style="width:21%">Cost & time</th></tr></thead>
+    <tbody>
+      <tr><td><b>Business entity</b></td><td>Proprietorship is fastest; an LLP or private limited company separates personal and business liability and looks more established to larger buyers and banks. Decide with your CA.</td><td>Proprietorship: nil. LLP / Pvt Ltd: professional fees, 1–3 weeks.</td></tr>
+      <tr><td><b>Current bank account</b></td><td>All buyer payments and supplier payments go through it. Enables UPI QR for business, NEFT/RTGS and later a working-capital limit.</td><td>A few days.</td></tr>
+      <tr><td><b>GST registration</b></td><td>The ₹40 lakh turnover threshold <b>does not help a wholesaler</b>: selling to a buyer in another state requires GST registration from the first sale. Registered buyers also insist on a GST invoice so they can claim input credit.</td><td>Government fee nil. Usually 1–2 weeks.</td></tr>
+      <tr><td><b>Udyam (MSME)</b></td><td>Wholesale traders have been eligible since July 2021 (NIC division 46). Gives access to MSME lending schemes and priority-sector credit.</td><td>Free, online, under an hour.</td></tr>
+      <tr><td><b>Shop & Establishment</b></td><td>Required by most states for a shop, office or godown with employees. Rules and fees vary by state and municipality.</td><td>State-specific.</td></tr>
+      <tr><td><b>Trademark — Class 25</b></td><td>Class 25 covers clothing. Filing early protects the ALQAIRA name before it becomes known. Consider Class 35 (wholesale and retail services) as well.</td><td>₹4,500 per class for individuals and MSMEs (e-filing), plus attorney fees if used.</td></tr>
+      <tr><td><b>IEC (later)</b></td><td>Importer-Exporter Code, needed only when you start exporting to the GCC (Phase 6).</td><td>Online via DGFT, same day.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div>
+      <h3>Tools to set up in the same weeks</h3>
+      <ul class="plain">
+        <li><b>Accounting & GST invoicing</b> — Tally, Zoho Books, Vyapar or similar. It must print GST invoices and generate e-way bills.</li>
+        <li><b>WhatsApp Business</b> on a dedicated business number, with the product catalogue, business hours and quick-reply templates.</li>
+        <li><b>Google Business Profile</b> for the office or godown, so buyers visiting your city can find you.</li>
+        <li><b>Business email</b> on your own domain for proformas, GST documents and larger buyers.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="box">
+        <h4>Documents to keep ready</h4>
+        <p class="muted" style="margin:0">PAN, Aadhaar, proof of business address (rent agreement or electricity bill + NOC), cancelled cheque of the current account, passport photographs, and — for an LLP or company — incorporation documents. A scanned folder of these saves days on every later application.</p>
+      </div>
+      <p class="small">Registration requirements change; confirm the final list with a chartered accountant in your state.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ PHASE 2 ══════════════════════════ -->
+<section class="page">
+  <div class="phase-head"><div class="n">02</div><h2 class="display">Range, supply and photography</h2><div class="when">Oct – early Nov</div></div>
+  <p class="phase-goal">Goal: a short range of garments you can reproduce at the same quality, at a known cost, and photographs of the real thing.</p>
+
+  <h3>Launch with 8–12 styles, not 50</h3>
+  <p>A new wholesaler's biggest risk is dead stock. A short range lets you make each style deeply enough in every size, keep reorders in stock, and learn quickly what sells. A suggested starting mix — adjust it with your suppliers' knowledge of what sells in your cities:</p>
+  <table>
+    <thead><tr><th>Style</th><th>Why it is in the launch</th><th class="r" style="width:18%">Share of stock</th></tr></thead>
+    <tbody>
+      <tr><td><b>Plain white thobes</b> — Saudi, Emirati, Omani</td><td>Year-round demand: Friday, Umrah, everyday. Lowest risk; sells in every city.</td><td class="r num">40%</td></tr>
+      <tr><td><b>Kids thobes</b> in the same cuts</td><td>Fathers buy for sons at the same visit. Cheap to make; lifts order value.</td><td class="r num">20%</td></tr>
+      <tr><td><b>Kurta pajama & pathani</b> in 2–3 solid colours</td><td>Broad Indian market, Friday and Eid wear.</td><td class="r num">20%</td></tr>
+      <tr><td><b>One embroidered / designer jubba</b></td><td>The Eid and wedding piece. Higher price, higher margin, but make fewer.</td><td class="r num">10%</td></tr>
+      <tr><td><b>Abaya or Nehru waistcoat</b></td><td>Test one women's or layering piece before committing to a full line.</td><td class="r num">10%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div>
+      <h3>Make or buy?</h3>
+      <p><b>Own production</b> (fabric bought by you, stitched by job-work units) gives the best margin and control, but needs cash for fabric in advance and someone checking quality in the unit.</p>
+      <p><b>Buying finished goods</b> from established manufacturers — Bhiwandi and Mumbai have a concentration of Islamic-wear makers — is faster and needs less supervision, but margins are thinner and the same design may reach your competitors.</p>
+      <p><b>A practical start:</b> buy or co-develop the plain thobes from one reliable maker, and produce the one or two signature designs yourself.</p>
+    </div>
+    <div>
+      <h3>Before approving a supplier</h3>
+      <ul class="check">
+        <li><span>Get a <b>sealed sample</b> of each style. Every bulk batch is checked against it.</span></li>
+        <li><span>Write down the <b>fabric, GSM, lining and opacity</b>. Buyers ask "is it see-through?" before anything else.</span></li>
+        <li><span>Measure the <b>size chart</b> on the actual sample: length, chest, sleeve.</span></li>
+        <li><span>Agree <b>lead time and minimum</b> per colour, in writing.</span></li>
+        <li><span>Wash-test one piece for <b>shrinkage and colour bleed</b>.</span></li>
+        <li><span>Keep a <b>second supplier</b> for the plain white thobes, your volume line.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note"><b>Photography is not optional.</b> The website currently uses AI-generated images from the earlier build. A shop owner who receives garments that do not match the photograph returns the whole consignment and does not reorder. Photograph the approved samples — front, back, detail, fabric close-up — on a plain background, and replace every image before the first sale.</div>
+</section>
+
+<!-- ══════════════════════════ PHASE 3 ══════════════════════════ -->
+<section class="page">
+  <div class="phase-head"><div class="n">03</div><h2 class="display">Prices and terms</h2><div class="when">Before the first sale</div></div>
+  <p class="phase-goal">Goal: prices that give the shop a reason to stock you and give ALQAIRA a margin that survives discounts, freight and slow payers.</p>
+
+  <h3>Price from the shelf backwards</h3>
+  <p>Start with the price a shopper will pay (the MRP printed on the tag), then work back. Indian garment retailers typically expect to earn around half of the MRP. Worked example using the plain Saudi thobe — the figures are the website's working prices, shown here to illustrate the method, not final numbers:</p>
+
+  <table style="width:78%">
+    <thead><tr><th>Per piece</th><th class="r">₹</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>MRP printed on the tag</td><td class="r num">1,499</td><td class="muted">What the shopper pays, including GST</td></tr>
+      <tr><td>ALQAIRA wholesale price</td><td class="r num">690</td><td class="muted">Plus 5% GST charged to the shop</td></tr>
+      <tr><td>Shop's gross margin</td><td class="r num">≈ 780</td><td class="muted">About 52% of MRP — enough to justify shelf space</td></tr>
+      <tr><td>Your target landed cost</td><td class="r num">≤ 450</td><td class="muted">Fabric, stitching, trims, label, polybag, carton share</td></tr>
+      <tr class="total"><td>ALQAIRA gross margin</td><td class="r num">240</td><td>≈ 35% of the wholesale price</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div>
+      <h3>Build the discounts in from day one</h3>
+      <p>The website offers 5%, 10% and 15% off for orders of 50, 150 and 400+ pieces. At 10% off, the thobe above sells for ₹621 and your margin falls from ₹240 to ₹171. <b>If your real cost is higher than ₹450, reduce the discounts before launch</b> — not after a buyer has seen them.</p>
+      <h3>Watch the GST line</h3>
+      <p>Since 22 September 2025, garments sold at <b>₹2,500 or less per piece</b> attract 5% GST; above that, 18%. Wholesale prices sit well below this, but an embroidered jubba with a high MRP should be checked — the rate follows the value of each sale.</p>
+    </div>
+    <div class="box">
+      <h4>Recommended trade terms for the first year</h4>
+      <table style="margin:1mm 0 0">
+        <tbody>
+          <tr><td style="width:36%"><b>First order</b></td><td>100% advance, or 50% advance and the balance before dispatch.</td></tr>
+          <tr><td><b>Minimum order</b></td><td>₹15,000 value, any styles mixed; one size-set pack minimum per style.</td></tr>
+          <tr><td><b>Credit</b></td><td>Only after three paid orders; 30 days; a written limit per buyer.</td></tr>
+          <tr><td><b>Freight</b></td><td>Paid by the buyer, at actuals, by the transporter they choose.</td></tr>
+          <tr><td><b>Returns</b></td><td>Manufacturing defects only, reported with photos within 7 days.</td></tr>
+          <tr><td><b>Samples</b></td><td>Single pieces at wholesale price; value adjusted on the first bulk order.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="note"><b>Why credit is the danger.</b> Retail buyers commonly take 30 to 60 days to pay, and often longer than agreed. Every rupee owed to you by a shop is a rupee you cannot spend on fabric for the next batch. Most small wholesalers that fail are profitable on paper and out of cash in practice.</div>
+</section>
+
+<!-- ══════════════════════════ PHASE 4 ══════════════════════════ -->
+<section class="page">
+  <div class="phase-head"><div class="n">04</div><h2 class="display">Finding the first 25 buyers</h2><div class="when">Nov 2026 – Jan 2027</div></div>
+  <p class="phase-goal">Goal: 25 shops that have placed a paid order before Ramadan, and at least ten of them reordering.</p>
+
+  <table>
+    <thead><tr><th style="width:22%">Channel</th><th>How to use it</th><th style="width:16%">Priority</th></tr></thead>
+    <tbody>
+      <tr><td><b>Shop visits with a sample bag</b></td><td>The single most effective channel for a new name. Visit Islamic-wear and menswear shops in your city and two nearby cities. Carry one sample of every style, a printed line sheet with prices, a GST certificate copy and visiting cards. Take the first order on the spot if you can.</td><td><b>Start here</b></td></tr>
+      <tr><td><b>WhatsApp Business</b></td><td>Every shop you meet goes into a broadcast list, not a group. Broadcasts arrive as a personal message; vendors report open rates above 85%. Send new stock, restock alerts and "last dates for Eid delivery" — once a week, never more.</td><td><b>From day one</b></td></tr>
+      <tr><td><b>The ALQAIRA Wholesale website</b></td><td>Already built. A buyer can see prices, margins and sizes, build an order and send it on WhatsApp. Put the link on every visiting card, line sheet and WhatsApp status.</td><td><b>From day one</b></td></tr>
+      <tr><td><b>Referrals</b></td><td>Ask each happy buyer for two shop owners in other cities. Offer free freight on the referred shop's first order.</td><td>From the 5th buyer</td></tr>
+      <tr><td><b>IndiaMART / TradeIndia</b></td><td>Start with a free listing using the real photographs. Paid IndiaMART packages run from roughly ₹28,000 a year; consider one once you can answer leads within the hour.</td><td>November</td></tr>
+      <tr><td><b>Instagram</b></td><td>Not for shoppers — for resellers. Post the pack, the fabric close-up and the margin. Many online resellers source this way.</td><td>December</td></tr>
+      <tr><td><b>Institutions</b></td><td>Madrasas, Islamic schools and Umrah tour operators buy plain white thobes in bulk. Slower to close, very steady once won.</td><td>January</td></tr>
+      <tr><td><b>Trade fairs</b></td><td>CMAI's National Garment Fair in Mumbai each July. Visit in 2027 to meet buyers; exhibit once the range is proven.</td><td>July 2027</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="box">
+      <h4>What to say in the first sixty seconds</h4>
+      <p class="muted">"We are ALQAIRA, a thobe and kurta wholesaler. One pack is one piece in every size, so you never get stuck with odd sizes. This thobe sells at ₹1,499; you buy it at ₹690 — about ₹780 margin a piece. Minimum order is ₹15,000 across any styles, delivery before Ramadan. Can I leave a sample and the price list?"</p>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Where to focus visits</h3>
+      <p class="muted">Start with markets where Islamic menswear shops cluster and footfall peaks before Eid. Well-known examples include Mohammed Ali Road and Bhendi Bazaar in Mumbai, the Charminar area in Hyderabad, Aminabad in Lucknow, Jama Masjid and Chandni Chowk in Delhi, Zakaria Street in Kolkata, Shivajinagar in Bengaluru, and Kozhikode in Kerala. Choose the three you can serve best from your base.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ PHASE 5 ══════════════════════════ -->
+<section class="page">
+  <div class="phase-head"><div class="n">05</div><h2 class="display">Running the operation</h2><div class="when">From the first order</div></div>
+  <p class="phase-goal">Goal: every order handled the same way, every rupee collected, and stock you can count at any moment.</p>
+
+  <h3>Order to cash, step by step</h3>
+  <table>
+    <thead><tr><th style="width:5%">#</th><th style="width:24%">Step</th><th>What happens</th><th style="width:18%">Target time</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td><b>Order received</b></td><td>From the website, WhatsApp, a visit or a call. Confirm stock size by size.</td><td>Same working day</td></tr>
+      <tr><td class="num">2</td><td><b>Proforma invoice</b></td><td>Styles, sizes, quantities, discount, GST, bank details and dispatch date.</td><td>Same working day</td></tr>
+      <tr><td class="num">3</td><td><b>Advance received</b></td><td>Check the credit in the bank, not a screenshot, before packing.</td><td>—</td></tr>
+      <tr><td class="num">4</td><td><b>Pick and pack</b></td><td>Pack by size-set, one polybag per piece, cartons labelled with buyer, style and sizes. Photograph packed cartons.</td><td>1–3 days</td></tr>
+      <tr><td class="num">5</td><td><b>Balance and invoice</b></td><td>Send carton photos, collect the balance, issue the GST tax invoice.</td><td>—</td></tr>
+      <tr><td class="num">6</td><td><b>Dispatch</b></td><td>Generate an <b>e-way bill</b> for any consignment above ₹50,000. Hand over to the buyer's transporter; send the LR / tracking number.</td><td>3–5 days from order</td></tr>
+      <tr><td class="num">7</td><td><b>Follow up</b></td><td>Call a week after delivery: condition, what sold first, what to reorder.</td><td>Delivery + 7 days</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div>
+      <h3>Weekly routine</h3>
+      <ul class="plain">
+        <li><b>Monday:</b> stock count by style and size; list what must be reordered from suppliers.</li>
+        <li><b>Tuesday–Thursday:</b> visits, follow-ups and new-buyer calls.</li>
+        <li><b>Friday:</b> one WhatsApp broadcast — new stock, restocks or last delivery dates.</li>
+        <li><b>Saturday:</b> collections review. Call every buyer who is past due, the same day.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Records to keep from the first day</h3>
+      <ul class="plain">
+        <li>A <b>buyer register</b>: shop, city, GSTIN, contact, orders, payment behaviour.</li>
+        <li><b>Stock by size</b>, not just by style — the size curve decides reorders.</li>
+        <li><b>Sell-through by style</b> after each season: what to repeat, what to drop.</li>
+        <li>Every <b>supplier batch</b> checked against the sealed sample, with notes.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ PHASE 6 ══════════════════════════ -->
+<section class="page">
+  <div class="phase-head"><div class="n">06</div><h2 class="display">Growing after the first season</h2><div class="when">Mar 2027 onward</div></div>
+  <p class="phase-goal">Goal: a business that grows from reorders and referrals rather than from new visits alone.</p>
+
+  <div class="grid2">
+    <div>
+      <h3>1. Review the season honestly</h3>
+      <p>Within two weeks of Eid al-Fitr, list every style with units sold, units left and reorders. Drop the bottom two styles, deepen the top three, and fix the size curve for Eid al-Adha orders in April.</p>
+
+      <h3>2. Reward the buyers who reorder</h3>
+      <p>Offer credit terms, early access to new designs and priority dispatch to the buyers who paid on time. They are cheaper to keep than new ones are to find.</p>
+
+      <h3>3. Add cities through distributors</h3>
+      <p>Once a city has five or more active shops, one local distributor who holds stock can serve them faster than dispatches from your godown.</p>
+
+      <h3>4. Private label</h3>
+      <p>Make your styles under a larger retailer's or reseller's own label, from around 100 pieces per design. It fills production capacity between seasons.</p>
+    </div>
+    <div>
+      <h3>5. Export to the GCC</h3>
+      <p>The UAE, Saudi Arabia and the rest of the GCC are the largest thobe markets in the world, and the Indian community there buys Indian-made kurtas and pathanis.</p>
+      <ul class="plain">
+        <li><b>IEC</b> from DGFT to export.</li>
+        <li><b>RCMC</b> from the Apparel Export Promotion Council (AEPC) for garment exporters.</li>
+        <li><b>India–UAE CEPA</b> (in force since May 2022) gives many Indian goods preferential or zero duty in the UAE. Claim it with a Certificate of Origin through the DGFT portal.</li>
+        <li><b>Saudi Arabia</b> applies the GCC unified tariff — most goods around 5% — and clears imports through the SABER platform. Check the exact HS code rate before quoting.</li>
+      </ul>
+      <p class="small">Start with one importer or trader in Dubai or Sharjah rather than shipping speculatively.</p>
+
+      <h3>6. Add B2B marketplaces</h3>
+      <p>Udaan and Flipkart Wholesale reach small retailers across India. Add them once your stock and dispatch are reliable — marketplace penalties for late dispatch are strict.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ MONEY ══════════════════════════ -->
+<section class="page">
+  <div class="section-head">
+    <p class="eyebrow">Money</p>
+    <h2 class="display">What it takes to start, and where cash gets stuck.</h2>
+    <p class="lede">Indicative budget for a lean start with a 12-style range. Replace every line with real quotes; the point is to see the proportions — most of the money is stock and the cash tied up waiting for payment.</p>
+  </div>
+
+  <div class="grid2" style="grid-template-columns: 1.25fr 1fr">
+    <table>
+      <thead><tr><th>Item</th><th class="r" style="width:34%">Estimate (₹)</th></tr></thead>
+      <tbody>
+        <tr><td>Registrations, CA set-up, trademark (1 class)</td><td class="r num">15,000 – 35,000</td></tr>
+        <tr><td>Samples and sealed-sample sets (3 bags)</td><td class="r num">25,000 – 40,000</td></tr>
+        <tr><td>Product photography of real garments</td><td class="r num">20,000 – 50,000</td></tr>
+        <tr><td>Labels, swing tags, polybags, cartons, printed line sheets</td><td class="r num">15,000 – 30,000</td></tr>
+        <tr><td><b>Launch stock</b> — 12 styles × 15 packs × 5 pcs = 900 pcs at ~₹450</td><td class="r num"><b>≈ 4,00,000</b></td></tr>
+        <tr><td>Travel for market visits, Nov – Jan</td><td class="r num">30,000 – 60,000</td></tr>
+        <tr><td>B2B listing (optional, year 1)</td><td class="r num">0 – 60,000</td></tr>
+        <tr><td>Cash reserve: restocking and slow payers</td><td class="r num">1,00,000 – 2,00,000</td></tr>
+        <tr class="total"><td>Indicative total</td><td class="r num">≈ 6 – 9 lakh</td></tr>
+      </tbody>
+    </table>
+
+    <div>
+      <div class="box dark" style="margin-top:2mm">
+        <h4>The cash cycle</h4>
+        <p class="muted" style="margin-bottom:3mm">Count the days between paying your supplier and being paid by the shop. That gap is how much money the business needs, and it returns every season.</p>
+        <table style="margin:0; color: var(--ivory)">
+          <tbody>
+            <tr><td style="border-color:rgba(250,246,238,0.15)">Pay for fabric / goods</td><td class="r num" style="border-color:rgba(250,246,238,0.15)">Day 0</td></tr>
+            <tr><td style="border-color:rgba(250,246,238,0.15)">Stock ready</td><td class="r num" style="border-color:rgba(250,246,238,0.15)">Day 20–30</td></tr>
+            <tr><td style="border-color:rgba(250,246,238,0.15)">Sold and dispatched</td><td class="r num" style="border-color:rgba(250,246,238,0.15)">Day 30–75</td></tr>
+            <tr><td style="border:none">Paid — with advance terms</td><td class="r num" style="border:none">Same day</td></tr>
+            <tr><td style="border:none">Paid — on 30–60 day credit</td><td class="r num" style="border:none">Day 60–135</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">Advance terms in the first year can halve the money the business needs. Seasonal working-capital loans (drawn before the season, repaid after) suit this business better than long fixed loans; Udyam registration helps with MSME lending.</p>
+    </div>
+  </div>
+
+  <h3>The numbers to watch every month</h3>
+  <table>
+    <thead><tr><th style="width:28%">Measure</th><th>Why</th><th class="r" style="width:24%">First-season target</th></tr></thead>
+    <tbody>
+      <tr><td><b>Active buyers</b></td><td>Shops that have placed a paid order.</td><td class="r num">25 by end of January</td></tr>
+      <tr><td><b>Reorder rate</b></td><td>The clearest sign the range sells on the shop floor.</td><td class="r num">40% reorder before Eid</td></tr>
+      <tr><td><b>Average order value</b></td><td>Low values mean your minimum or tiers need adjusting.</td><td class="r num">₹25,000+</td></tr>
+      <tr><td><b>Days to collect</b></td><td>Cash health. Rising numbers are the earliest warning.</td><td class="r num">Under 15 days</td></tr>
+      <tr><td><b>Sell-through by size</b></td><td>Decides the next production's size curve.</td><td class="r num">Track, no target</td></tr>
+      <tr><td><b>Stock older than 90 days</b></td><td>Dead stock is cash you cannot use.</td><td class="r num">Under 15% of stock</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════════════════════ 90-DAY CHECKLIST ══════════════════════════ -->
+<section class="page">
+  <div class="section-head">
+    <p class="eyebrow">The next 90 days</p>
+    <h2 class="display">Week-by-week checklist, October to December 2026.</h2>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h3>October 1 – 14</h3>
+      <ul class="check">
+        <li><span>Decide <b>entity</b>, open the current account, apply for <b>GST</b>.</span></li>
+        <li><span>Complete <b>Udyam</b>; file the <b>Class 25 trademark</b>.</span></li>
+        <li><span>Choose the <b>8–12 launch styles</b> and the three launch cities.</span></li>
+        <li><span>Brief 2–3 suppliers or job-work units; order <b>samples</b>.</span></li>
+      </ul>
+
+      <h3>October 15 – 31</h3>
+      <ul class="check">
+        <li><span>Approve samples; write specs; build the <b>costing sheet</b>.</span></li>
+        <li><span>Confirm <b>final prices and discounts</b>; update the website.</span></li>
+        <li><span><b>Photograph</b> the real garments; replace every website image.</span></li>
+        <li><span>Set up the <b>WhatsApp Business</b> catalogue and quick replies.</span></li>
+        <li><span>Place the <b>launch production</b> order with sizes 56/58 weighted up.</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>November</h3>
+      <ul class="check">
+        <li><span>Print line sheets, visiting cards, swing tags; pack <b>3 sample bags</b>.</span></li>
+        <li><span>List <b>100 target shops</b> across the three launch cities.</span></li>
+        <li><span>Visit 10–15 shops a week; add each to the <b>broadcast list</b>.</span></li>
+        <li><span>Free listings on <b>IndiaMART</b> and <b>TradeIndia</b>.</span></li>
+        <li><span>Receive and <b>quality-check</b> launch stock against sealed samples.</span></li>
+      </ul>
+
+      <h3>December</h3>
+      <ul class="check">
+        <li><span>Dispatch first orders; <b>follow-up call</b> a week after delivery.</span></li>
+        <li><span>Weekly <b>stock-by-size</b> count; place restock for fast sizes.</span></li>
+        <li><span>Second visit round; ask each buyer for <b>two referrals</b>.</span></li>
+        <li><span>Broadcast the <b>last order date for Ramadan delivery</b> (≈ 10 January).</span></li>
+        <li><span>Approach 3 <b>madrasas or Umrah operators</b> for plain white thobes.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:4mm">
+    <h4>Seven mistakes that end new wholesale businesses</h4>
+    <div class="grid2" style="gap:2mm 8mm">
+      <ul class="plain" style="margin:0">
+        <li>Giving credit to first-time buyers.</li>
+        <li>Launching with too many styles, too thinly stocked.</li>
+        <li>Making every size in equal numbers.</li>
+        <li>Missing the pre-season buying window.</li>
+      </ul>
+      <ul class="plain" style="margin:0">
+        <li>Selling from photographs that are not the real garment.</li>
+        <li>Terms agreed verbally instead of on the proforma.</li>
+        <li>Discounts that were never checked against real cost.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ WEBSITE ══════════════════════════ -->
+<section class="page">
+  <div class="section-head">
+    <p class="eyebrow">What is already built</p>
+    <h2 class="display">The wholesale website does the selling paperwork.</h2>
+    <p class="lede">ALQAIRA Wholesale is ready to launch as soon as prices, photographs and contact details are final. It is built around how shop owners actually order.</p>
+  </div>
+
+  <table>
+    <thead><tr><th style="width:30%">Feature</th><th>What it does for the buyer — and for you</th></tr></thead>
+    <tbody>
+      <tr><td><b>Line sheet with margins</b></td><td>Every style shows wholesale price, printed MRP and the shop's margin — the number a shop owner decides on.</td></tr>
+      <tr><td><b>Size-set packs</b></td><td>One pack is one piece in every size. Buyers can also split sizes by hand; each style needs at least one pack's worth.</td></tr>
+      <tr><td><b>Volume tiers on the whole order</b></td><td>5% / 10% / 15% off by total pieces, with a live "add 30 more pieces for 10% off" nudge that raises order size.</td></tr>
+      <tr><td><b>Quick order page</b></td><td>Every style on one screen for repeat buyers who know the codes.</td></tr>
+      <tr><td><b>Order sheet → WhatsApp</b></td><td>The order, size by size, with discount, GST and the buyer's GSTIN, arrives on your WhatsApp as one message. Also downloadable as a spreadsheet.</td></tr>
+      <tr><td><b>Minimum-order checks</b></td><td>An order below ₹15,000, or a style below one pack, cannot be sent — no time lost on orders you would refuse.</td></tr>
+      <tr><td><b>Trade account form</b></td><td>New shops apply with business name, city, buyer type, GSTIN (format-checked) and expected volume.</td></tr>
+      <tr><td><b>Private label, terms, FAQ</b></td><td>Answers the questions every new buyer asks before they call.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Needed from you before launch</h3>
+  <ul class="check">
+    <li><span><b>Final prices</b>, MRPs, minimum order value and discount tiers.</span></li>
+    <li><span><b>Real photographs</b> of each approved style — four views per style.</span></li>
+    <li><span>Fabric, GSM, lining and <b>dispatch times</b> for each style.</span></li>
+    <li><span><b>Business email</b> address. The WhatsApp number (+91 761 809 4118) is already set.</span></li>
+    <li><span><b>Domain</b> for the site, e.g. wholesale.alqaira.com.</span></li>
+  </ul>
+</section>
+
+<!-- ══════════════════════════ SOURCES ══════════════════════════ -->
+<section class="page">
+  <div class="section-head">
+    <p class="eyebrow">Sources</p>
+    <h2 class="display" style="font-size:20pt">Research behind this plan</h2>
+    <p class="lede" style="font-size:10pt">Consulted September 2026. Regulations, fees and fair dates change; confirm them with a chartered accountant and the official portals before acting.</p>
+  </div>
+  <ul class="sources plain">
+    <li class="grp" style="list-style:none;margin-left:-4.5mm">Registration and tax</li>
+    <li>Udyam registration for wholesale traders — udyog-aadhar.com/news/retailers-and-wholesalers-can-now-obtain-udyam-registration</li>
+    <li>Udyam NIC codes — tallysolutions.com/business-guides/udyam-nic-code</li>
+    <li>MSME registration guide 2026 — myhq.in/guides/msme-registration</li>
+    <li>GST on garments: 5% up to ₹2,500, 18% above (from 22 Sep 2025) — taxguru.in/goods-and-service-tax/gst-garments-rs-2500-raised-18-percent-rationalise-tax-structure.html</li>
+    <li>GST on clothes — razorpay.com/learn/gst-on-clothes</li>
+    <li>E-way bill ₹50,000 threshold — cleartax.in/s/eway-bill-gst-rules-compliance</li>
+    <li>Starting a clothing business in India (2026) — themunim.com/blog/how-to-start-a-clothing-business-in-india</li>
+
+    <li class="grp" style="list-style:none;margin-left:-4.5mm">Season and calendar</li>
+    <li>Ramadan 2027 and Eid al-Fitr dates — thenationalnews.com/news/uae/2026/09/09/ramadan-2027-dates-eid-al-fitr-holiday</li>
+    <li>Eid al-Adha 2027 — humanappealusa.org/news/2026/4/when-is-eid-al-adha-date-meaning-and-how-to-prepare</li>
+    <li>Eid 2027 menswear demand and size sell-through — thetopiwala.com/blogs/the-sunnah-style-journal/eid-al-fitr-2027-mens-outfit-guide</li>
+    <li>CMAI fairs and events — cmai.in/fairs-events · National Garment Fair 2026 — showsbee.com/fairs/India-National-Garment-Fair.html</li>
+
+    <li class="grp" style="list-style:none;margin-left:-4.5mm">Wholesale practice, MOQ and credit</li>
+    <li>Apparel wholesale MOQ policies 2026 — repspark.com/blog/apparel-wholesale-moq-policies-explained-for-2026</li>
+    <li>Minimum order quantities for fashion brands — joor.com/insights/minimum-order-quantities-moq</li>
+    <li>B2B ecommerce examples and UX — wizcommerce.com/blog/b2b-ecommerce-example</li>
+    <li>Wholesale credit terms — fakhruddintrading.com/wholesale-credit-terms</li>
+    <li>Wholesale business working capital — godrejcapital.com/media-blog/knowledge-centre/wholesale-business-ideas-in-india</li>
+
+    <li class="grp" style="list-style:none;margin-left:-4.5mm">Sales channels</li>
+    <li>B2B platforms in India — fibre2fashion.com/resources/10602/top-10-b2b-websites-in-india-for-manufacturers-traders-and-retailers</li>
+    <li>IndiaMART packages — refrens.com/grow/detailed-overview-and-analysis-of-all-indiamart-packages</li>
+    <li>WhatsApp for wholesale and dealer networks — greentick.ai/blogs/whatsapp-api-for-wholesale-business</li>
+    <li>Islamic clothing manufacturers, Bhiwandi and Mumbai — dir.indiamart.com/impcat/islamic-clothing.html</li>
+
+    <li class="grp" style="list-style:none;margin-left:-4.5mm">Export</li>
+    <li>India–UAE CEPA — moet.gov.ae/en/cepa_india</li>
+    <li>CEPA certificate of origin — afleo.com/india-uae-cepa-coo-dgft</li>
+    <li>RCMC — dgft.gov.in/CP/?opt=e-rcmc</li>
+    <li>Saudi customs duties 2026 — incorpmena.com/saudi-customs-duties · GCC integrated tariff — kpmg.com/sa/en/insights/tax-insights/tax-alert-gcc-countries-implement-the-gcc-integrated-customs-tariff.html</li>
+  </ul>
+</section>
+
+</body>
+</html>
